@@ -116,3 +116,4 @@ dmypy.json
 # User ignore
 .DS_Store
 database.cfg
+.vscode/
