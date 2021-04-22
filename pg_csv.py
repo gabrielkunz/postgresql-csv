@@ -1,9 +1,10 @@
 # pylint: disable=E1101
+
 import psycopg2
 import getpass
 from configparser import ConfigParser
 
-def read_config_file(filename,section='postgresql'):
+def config(filename,section='postgresql'):
     parser = ConfigParser()
     parser.read(filename)
 
@@ -12,9 +13,16 @@ def read_config_file(filename,section='postgresql'):
     for param in params:
         db_data[param[0]] = param[1]
 
+    password = getpass.getpass('Enter password for User ' 
+                                + db_data['user'] 
+                                +' in database ' 
+                                + db_data['database'] 
+                                +': ')
+    db_data['password'] = password
+
     return db_data
 
-def connect_to_database(**params):
+def connect(**params):
     try:
         connection = psycopg2.connect(**params)
         
@@ -32,9 +40,6 @@ def connect_to_database(**params):
 
 if __name__ == '__main__':
 
-    params = read_config_file('database.cfg')
+    params = config('database.cfg')
 
-    password = getpass.getpass('Enter password: ')
-    params['password'] = password
-
-    connect_to_database(**params)
+    connect(**params)
