@@ -3,14 +3,11 @@
 
 ## database.cfg file format:
 
-[postgresql]
+Password is required during script execution, there's no need to save it in the .cfg file. Place the file in the same directory as the main script.
 
-database=yourdatabasename
-
-user=username
-
-password = <not required, requested when running the script>
-
-host=yourhostaddress
-
-port=portnumber
+>[postgresql]\
+>database=yourdatabasename\
+>user=username\
+>password = \
+>host=yourhostaddress\
+>port=portnumber\
