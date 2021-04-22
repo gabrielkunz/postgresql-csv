@@ -10,4 +10,5 @@ Password is required during script execution, there's no need to save it in the 
 >user=username\
 >password = \
 >host=yourhostaddress\
->port=portnumber\
+>port=portnumber
+
